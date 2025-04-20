@@ -12,9 +12,9 @@ struct message_t {
 message_t msg;
 
 void play_sound() {
-    digitalWrite(LED_BUILTIN, HIGH);
-    mp3.play(1, 10);
     digitalWrite(LED_BUILTIN, LOW);
+    mp3.play(1, 10);
+    digitalWrite(LED_BUILTIN, HIGH);
 }
 
 
@@ -31,9 +31,9 @@ void setup() {
 
     Serial.begin(9600);
     mp3.begin(9600);
-    delay(500);
+    delay(1000);
     mp3.sendCommand(CMD_SEL_DEV, 0, 2);   //select sd-card
-    delay(500);
+    delay(1000);
 
     WiFi.mode(WIFI_STA);
 
@@ -44,6 +44,7 @@ void setup() {
 
     esp_now_set_self_role(ESP_NOW_ROLE_SLAVE);
     esp_now_register_recv_cb(on_recv);
+    digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void loop() {
