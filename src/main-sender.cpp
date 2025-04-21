@@ -35,7 +35,7 @@ void printWelcome() {
     screen.setTextSize(3);
     screen.println("Welcome!");
     screen.setTextSize(2);
-    screen.println("Dethy + Lucier");
+    screen.println("Dethy\n& Lucier");
 }
 
 void printResult(bool success) {
