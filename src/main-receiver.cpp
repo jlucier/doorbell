@@ -47,5 +47,19 @@ void setup() {
     digitalWrite(LED_BUILTIN, HIGH);
 }
 
+#define ON LOW
+#define OFF HIGH
+bool button = OFF;
+
 void loop() {
+    int new_state = digitalRead(D3);
+
+    if (new_state != button) {
+        digitalWrite(LED_BUILTIN, new_state ? HIGH : LOW);
+
+        if (new_state == ON) {
+            play_sound();
+        }
+    }
+    button = new_state;
 }
