@@ -13,7 +13,7 @@ message_t msg;
 
 void play_sound() {
     digitalWrite(LED_BUILTIN, LOW);
-    mp3.play(1, 10);
+    mp3.play(1, 20);
     digitalWrite(LED_BUILTIN, HIGH);
 }
 
@@ -26,7 +26,6 @@ void on_recv(uint8_t* mac, uint8_t* data, uint8_t len) {
 
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
-
     digitalWrite(LED_BUILTIN, LOW);
 
     Serial.begin(9600);
@@ -34,6 +33,7 @@ void setup() {
     delay(1000);
     mp3.sendCommand(CMD_SEL_DEV, 0, 2);   //select sd-card
     delay(1000);
+    play_sound();
 
     WiFi.mode(WIFI_STA);
 
